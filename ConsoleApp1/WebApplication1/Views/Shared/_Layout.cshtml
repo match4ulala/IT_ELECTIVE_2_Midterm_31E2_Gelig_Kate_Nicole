@@ -1,50 +1,122 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - WebApplication1</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - My Portfolio</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body, .bg-light {
+            background-color: #F8F4FF !important;
+            color: #333333;
+        }
+        .sidebar, nav.navbar {
+            background-color: #A599C9 !important;
+        }
+        .btn-primary {
+            background-color: #A599C9 !important;
+            border-color: #A599C9 !important;
+            color: #ffffff !important;
+        }
+        .btn-primary:hover {
+            background-color: #9284BA !important;
+            border-color: #9284BA !important;
+        }
+        .btn-outline-secondary {
+            color: #A599C9 !important;
+            border-color: #A599C9 !important;
+        }
+        .btn-outline-secondary:hover {
+            background-color: #A599C9 !important;
+            color: #ffffff !important;
+        }
+        .text-primary {
+            color: #A599C9 !important;
+        }
+        @@media (min-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 100;
+                padding: 20px 0 0;
+                box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+                width: 240px;
+            }
+            .main-content {
+                margin-left: 240px;
+            }
+        }
+    </style>
 </head>
-<body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark d-md-none fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApplication1</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand fw-bold" href="#home">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2026 - WebApplication1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse mt-5 mt-md-0">
+                <div class="position-sticky pt-3">
+                    <div class="text-center text-white my-3 d-none d-md-block">
+                        <h4 class="fw-bold">My Portfolio</h4>
+                        <hr class="text-secondary" />
+                    </div>
+                    <ul class="nav flex-column px-2">
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white active" href="#home">
+                                <i class="bi bi-house-door me-2"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white-50" href="#about">
+                                <i class="bi bi-person me-2"></i>About Me
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white-50" href="#skills">
+                                <i class="bi bi-code-slash me-2"></i>Skills
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white-50" href="#projects">
+                                <i class="bi bi-folder2-open me-2"></i>Projects
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a class="nav-link text-white-50" href="#contact">
+                                <i class="bi bi-envelope me-2"></i>Contact
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content pt-5 pt-md-0">
+                @RenderBody()
+                <footer class="text-center py-4 text-muted border-top mt-5">
+                    <p class="mb-0">&copy; @DateTime.Now.Year - Portfolio. All Rights Reserved.</p>
+                </footer>
+            </main>
+        </div>
     </div>
-</footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
