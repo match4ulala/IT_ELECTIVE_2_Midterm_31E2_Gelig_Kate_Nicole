@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "About Me";
+}
+
+<div class="container my-4">
+    <div class="card border-0 shadow-sm p-4 bg-white rounded-4">
+        <h2 class="fw-bold mb-4 text-dark d-flex align-items-center">
+            <i class="bi bi-person-badge text-primary me-3"></i>Professional Background
+        </h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="fs-5 text-secondary leading-relaxed mb-4">
+                    @ViewData["Bio1"]
+                </p>
+                <p class="fs-5 text-secondary leading-relaxed mb-4">
+                    @ViewData["Bio2"]
+                </p>
+                <div class="mt-4">
+                    <a asp-controller="Home" asp-action="Contact" class="btn btn-animated-primary btn-lg px-4">
+                        <i class="bi bi-chat-dots me-2"></i>Let's Connect
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

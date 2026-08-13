@@ -1,206 +1,27 @@
 ﻿@{
-    ViewData["Title"] = "Portfolio";
+    ViewData["Title"] = "Home";
 }
 
-<section id="home" class="py-5 my-md-4">
-    <div class="container">
-        <div class="row align-items-center gy-4">
-            <div class="col-md-4 text-center">
-                <img src="~/images/Kate.jpeg" alt="Professional Photo" class="img-fluid rounded-circle shadow border border-4 border-white" />
-            </div>
-            <div class="col-md-8 text-center text-md-start">
-                <h1 class="display-4 fw-bold text-primary mb-2">Kate Nicole Gelig</h1>
-                <h3 class="text-secondary fw-normal mb-3">Aspiring Graphic Designer & Web Developer</h3>
-                <p class="lead text-muted mb-4">
-                    Welcome to my portfolio! I am an IT student passionate about building modern web applications, designing database schemas, and exploring network infrastructure & security.
-                </p>
-                <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-                    <a href="#projects" class="btn btn-primary btn-lg"><i class="bi bi-briefcase me-2"></i>View Projects</a>
-                    <a href="#contact" class="btn btn-outline-secondary btn-lg"><i class="bi bi-envelope me-2"></i>Contact Me</a>
-                </div>
+<div class="container my-5">
+    <div class="row align-items-center gy-4 p-4 rounded-4 bg-white shadow-sm border border-0">
+        <div class="col-md-4 text-center">
+            <img src="~/images/Kate.jpeg" alt="Professional Photo" class="img-fluid rounded-circle shadow-lg border border-4 border-white" style="width: 220px; height: 220px; object-fit: cover;" />
+        </div>
+        <div class="col-md-8 text-center text-md-start">
+            <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 mb-2 rounded-pill">Available for Projects</span>
+            <h1 class="display-5 fw-bold text-dark mb-2">@ViewData["FullName"]</h1>
+            <h4 class="text-muted fw-normal mb-3">@ViewData["ProfessionalTitle"]</h4>
+            <p class="lead text-secondary mb-4">
+                @ViewData["Introduction"]
+            </p>
+            <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+                <a asp-controller="Home" asp-action="Projects" class="btn btn-animated-primary btn-lg px-4">
+                    <i class="bi bi-briefcase me-2"></i>Explore Projects
+                </a>
+                <a asp-controller="Home" asp-action="Contact" class="btn btn-animated-outline btn-lg px-4">
+                    <i class="bi bi-envelope me-2"></i>Get in Touch
+                </a>
             </div>
         </div>
     </div>
-</section>
-
-<hr class="my-5" />
-
-<section id="about" class="py-4">
-    <div class="container">
-        <h2 class="fw-bold mb-4 text-center text-md-start"><i class="bi bi-person-badge text-primary me-2"></i>About Me</h2>
-        <div class="row">
-            <div class="col-lg-12">
-                <p class="fs-5 text-secondary">
-                    I am currently a college student taking a bachelor of science in information technology. While I am learning about modern software concepts, object-oriented programming, and computer networking, I am especially interested in the creative side of technology. I enjoy art, graphic design, and editing different types of digital content. My goal is to become a graphic designer and further develop my skills in visual design and creativity. I am also eager to learn more about web design and explore how technology and art can work together to create engaging and functional digital experiences.
-                </p>
-                <p class="fs-5 text-secondary">
-                    My career goal is to become a successful woman working in the technology field or a graphic designer who combines creativity and technology to create meaningful and visually engaging designs. I am passionate about digital art and enjoy exploring different forms of editing and visual design. Outside of my academic studies, I spend my free time creating digital art concepts, experimenting with editing, and exploring new ideas in web design. I hope to continue developing my creative and technical skills while learning how art and technology can work together.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<hr class="my-5" />
-
-<section id="skills" class="py-4">
-    <div class="container">
-        <h2 class="fw-bold mb-4 text-center text-md-start"><i class="bi bi-gear-wide-connected text-primary me-2"></i>Skills</h2>
-        <div class="row g-4">
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-0 bg-white">
-                    <div class="card-body text-center">
-                        <i class="bi bi-code-square display-5 text-primary mb-3"></i>
-                        <h5 class="card-title fw-bold">Programming</h5>
-                        <ul class="list-unstyled mt-3 mb-0 text-muted">
-                            <li>C#</li>
-                            <li>JavaScript</li>
-                            <li>Python</li>
-                            <li>SQL</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-0 bg-white">
-                    <div class="card-body text-center">
-                        <i class="bi bi-globe display-5 text-success mb-3"></i>
-                        <h5 class="card-title fw-bold">Web Technologies</h5>
-                        <ul class="list-unstyled mt-3 mb-0 text-muted">
-                            <li>ASP.NET Core MVC</li>
-                            <li>HTML5 & CSS3</li>
-                            <li>Bootstrap 5</li>
-                            <li>RESTful APIs</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-0 bg-white">
-                    <div class="card-body text-center">
-                        <i class="bi bi-database display-5 text-warning mb-3"></i>
-                        <h5 class="card-title fw-bold">Databases</h5>
-                        <ul class="list-unstyled mt-3 mb-0 text-muted">
-                            <li>Microsoft SQL Server</li>
-                            <li>MySQL</li>
-                            <li>Entity Framework Core</li>
-                            <li>SQLite</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="card h-100 shadow-sm border-0 bg-white">
-                    <div class="card-body text-center">
-                        <i class="bi bi-tools display-5 text-info mb-3"></i>
-                        <h5 class="card-title fw-bold">Development Tools</h5>
-                        <ul class="list-unstyled mt-3 mb-0 text-muted">
-                            <li>Visual Studio 2022</li>
-                            <li>Git & GitHub</li>
-                            <li>Cisco Packet Tracer</li>
-                            <li>Postman</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<hr class="my-5" />
-
-<section id="projects" class="py-4">
-    <div class="container">
-        <h2 class="fw-bold mb-4 text-center text-md-start"><i class="bi bi-folder-symlink text-primary me-2"></i>Projects</h2>
-        <div class="row g-4">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-0 bg-white">
-                    <img src="https://via.placeholder.com/400x225" class="card-img-top" alt="Inventory Management System">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Store & Inventory System</h5>
-                        <p class="card-text text-muted flex-grow-1">
-                            A relational database application designed to manage transaction records, units of measurement, and multi-store inventory.
-                        </p>
-                        <p class="card-text"><small class="text-primary fw-bold">Technologies:</small> <small class="text-muted">C#, SQL Server, ASP.NET Core</small></p>
-                        <button type="button" class="btn btn-outline-primary mt-auto">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-0 bg-white">
-                    <img src="https://via.placeholder.com/400x225" class="card-img-top" alt="Network Topology Simulation">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Network Infrastructure Design</h5>
-                        <p class="card-text text-muted flex-grow-1">
-                            A simulated network topology focusing on OSI model layer analysis, packet routing, and network protocol troubleshooting.
-                        </p>
-                        <p class="card-text"><small class="text-primary fw-bold">Technologies:</small> <small class="text-muted">Cisco Packet Tracer, OSI/TCP-IP</small></p>
-                        <button type="button" class="btn btn-outline-primary mt-auto">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm border-0 bg-white">
-                    <img src="https://via.placeholder.com/400x225" class="card-img-top" alt="Mobile App Data Sync">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Mobile Data Sync Engine</h5>
-                        <p class="card-text text-muted flex-grow-1">
-                            A conceptual mobile application module built to handle offline storage, update conflict resolutions, and server synchronization.
-                        </p>
-                        <p class="card-text"><small class="text-primary fw-bold">Technologies:</small> <small class="text-muted">JavaScript, REST API, SQLite</small></p>
-                        <button type="button" class="btn btn-outline-primary mt-auto">View Details</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<hr class="my-5" />
-
-<section id="contact" class="py-4 mb-5">
-    <div class="container">
-        <h2 class="fw-bold mb-4 text-center text-md-start"><i class="bi bi-telephone-outbound text-primary me-2"></i>Contact</h2>
-        <div class="row gy-4">
-            <div class="col-md-6">
-                <div class="card border-0 shadow-sm h-100 bg-white">
-                    <div class="card-body p-4">
-                        <h5 class="fw-bold mb-3">Contact Information</h5>
-                        <ul class="list-unstyled fs-6 mb-4">
-                            <li class="mb-3"><i class="bi bi-envelope-fill text-primary me-3"></i><strong>Email:</strong> katenicole@email.com</li>
-                            <li class="mb-3"><i class="bi bi-phone-fill text-primary me-3"></i><strong>Mobile:</strong> +62 912 345 6789</li>
-                            <li class="mb-3"><i class="bi bi-github text-primary me-3"></i><strong>GitHub:</strong> <a href="#" class="text-decoration-none">github.com/katenicole</a></li>
-                            <li class="mb-3"><i class="bi bi-linkedin text-primary me-3"></i><strong>LinkedIn:</strong> <a href="#" class="text-decoration-none">linkedin.com/in/katenicole</a></li>
-                            <li class="mb-3"><i class="bi bi-facebook text-primary me-3"></i><strong>Facebook:</strong> <a href="#" class="text-decoration-none">facebook.com/katenicole</a></li>
-                        </ul>
-                        <button type="button" class="btn btn-success btn-lg w-100">
-                            <i class="bi bi-download me-2"></i>Download Resume
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card border-0 shadow-sm h-100 bg-white">
-                    <div class="card-body p-4">
-                        <h5 class="fw-bold mb-3">Send a Message</h5>
-                        <form>
-                            <div class="mb-3">
-                                <label class="form-label">Your Name</label>
-                                <input type="text" class="form-control" placeholder="Enter your user">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Email Address</label>
-                                <input type="email" class="form-control" placeholder="Enter your email">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Message</label>
-                                <textarea class="form-control" rows="3" placeholder="Write your message here..."></textarea>
-                            </div>
-                            <button type="button" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+</div>

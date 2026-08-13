@@ -3,42 +3,106 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - My Portfolio</title>
+    <title>@ViewData["Title"] - Professional Portfolio</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
         body, .bg-light {
-            background-color: #F8F4FF !important;
-            color: #333333;
+            background-color: #F8F9FA !important;
+            color: #2D3748;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-        .sidebar, nav.navbar {
-            background-color: #A599C9 !important;
+
+        .sidebar {
+            background: linear-gradient(180deg, #6C5CE7 0%, #4834D4 100%) !important;
         }
-        .btn-primary {
-            background-color: #A599C9 !important;
-            border-color: #A599C9 !important;
-            color: #ffffff !important;
+
+        .nav-link {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            margin: 2px 8px;
         }
-        .btn-primary:hover {
-            background-color: #9284BA !important;
-            border-color: #9284BA !important;
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15) !important;
+            transform: translateX(4px);
+            color: #FFFFFF !important;
         }
-        .btn-outline-secondary {
-            color: #A599C9 !important;
-            border-color: #A599C9 !important;
+
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .btn-outline-secondary:hover {
-            background-color: #A599C9 !important;
-            color: #ffffff !important;
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(108, 92, 231, 0.12) !important;
         }
-        .text-primary {
-            color: #A599C9 !important;
+
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+            border-radius: 8px;
+            font-weight: 600;
         }
+
+        .btn-animated-primary {
+            background: linear-gradient(135deg, #6C5CE7 0%, #4834D4 100%) !important;
+            border: none !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 14px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn-animated-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.45);
+            color: #FFFFFF !important;
+        }
+
+        .btn-animated-outline {
+            border: 2px solid #6C5CE7 !important;
+            color: #6C5CE7 !important;
+            background: transparent !important;
+        }
+
+        .btn-animated-outline:hover {
+            background-color: #6C5CE7 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.25);
+        }
+
+        .btn-animated-success {
+            background: linear-gradient(135deg, #00B894 0%, #00876C 100%) !important;
+            border: none !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 14px rgba(0, 184, 148, 0.3);
+            animation: pulse-glow 2s infinite;
+        }
+
+        .btn-animated-success:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 22px rgba(0, 184, 148, 0.5);
+        }
+
+
+        .btn i {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover i {
+            transform: translateX(3px) scale(1.1);
+        }
+
+        @@keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 184, 148, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 184, 148, 0); }
+        }
+
         @@media (min-width: 768px) {
             .sidebar {
                 position: fixed;
@@ -47,11 +111,11 @@
                 left: 0;
                 z-index: 100;
                 padding: 20px 0 0;
-                box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-                width: 240px;
+                box-shadow: 2px 0 12px rgba(0,0,0,0.05);
+                width: 250px;
             }
             .main-content {
-                margin-left: 240px;
+                margin-left: 250px;
             }
         }
     </style>
@@ -60,8 +124,8 @@
 
     <nav class="navbar navbar-dark bg-dark d-md-none fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="#home">My Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
@@ -69,36 +133,37 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse mt-5 mt-md-0">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse mt-5 mt-md-0">
                 <div class="position-sticky pt-3">
-                    <div class="text-center text-white my-3 d-none d-md-block">
-                        <h4 class="fw-bold">My Portfolio</h4>
-                        <hr class="text-secondary" />
+                    <div class="text-center text-white my-4 d-none d-md-block">
+                        <h4 class="fw-bold tracking-wide">Kate Nicole Gelig</h4>
+                        <p class="small text-white-50">IT Professional</p>
+                        <hr class="border-light opacity-25" />
                     </div>
                     <ul class="nav flex-column px-2">
-                        <li class="nav-item mb-2">
-                            <a class="nav-link text-white active" href="#home">
+                        <li class="nav-item mb-1">
+                            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">
                                 <i class="bi bi-house-door me-2"></i>Home
                             </a>
                         </li>
-                        <li class="nav-item mb-2">
-                            <a class="nav-link text-white-50" href="#about">
-                                <i class="bi bi-person me-2"></i>About Me
+                        <li class="nav-item mb-1">
+                            <a class="nav-link text-white-50" asp-controller="Home" asp-action="About">
+                                <i class="bi bi-person-badge me-2"></i>About
                             </a>
                         </li>
-                        <li class="nav-item mb-2">
-                            <a class="nav-link text-white-50" href="#skills">
-                                <i class="bi bi-code-slash me-2"></i>Skills
+                        <li class="nav-item mb-1">
+                            <a class="nav-link text-white-50" asp-controller="Home" asp-action="Skills">
+                                <i class="bi bi-cpu me-2"></i>Skills
                             </a>
                         </li>
-                        <li class="nav-item mb-2">
-                            <a class="nav-link text-white-50" href="#projects">
-                                <i class="bi bi-folder2-open me-2"></i>Projects
+                        <li class="nav-item mb-1">
+                            <a class="nav-link text-white-50" asp-controller="Home" asp-action="Projects">
+                                <i class="bi bi-kanban me-2"></i>Projects
                             </a>
                         </li>
-                        <li class="nav-item mb-2">
-                            <a class="nav-link text-white-50" href="#contact">
-                                <i class="bi bi-envelope me-2"></i>Contact
+                        <li class="nav-item mb-1">
+                            <a class="nav-link text-white-50" asp-controller="Home" asp-action="Contact">
+                                <i class="bi bi-send me-2"></i>Contact
                             </a>
                         </li>
                     </ul>
@@ -106,9 +171,11 @@
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content pt-5 pt-md-0">
-                @RenderBody()
+                <div class="py-4">
+                    @RenderBody()
+                </div>
                 <footer class="text-center py-4 text-muted border-top mt-5">
-                    <p class="mb-0">&copy; @DateTime.Now.Year - Portfolio. All Rights Reserved.</p>
+                    <p class="mb-0 small">&copy; @DateTime.Now.Year Kate Nicole Gelig. Built with ASP.NET Core MVC.</p>
                 </footer>
             </main>
         </div>

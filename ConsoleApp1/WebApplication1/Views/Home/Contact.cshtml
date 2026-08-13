@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container my-4 mb-5">
+    <h2 class="fw-bold mb-4 text-dark"><i class="bi bi-send text-primary me-2"></i>Get In Touch</h2>
+    <div class="row gy-4">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-sm h-100 bg-white p-3">
+                <div class="card-body">
+                    <h5 class="fw-bold text-dark mb-4">Contact Information</h5>
+                    <ul class="list-unstyled fs-6 mb-4">
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-envelope-fill text-primary fs-5 me-3"></i>
+                            <div>
+                                <small class="text-muted d-block">Email</small>
+                                <strong>@ViewData["Email"]</strong>
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-phone-fill text-primary fs-5 me-3"></i>
+                            <div>
+                                <small class="text-muted d-block">Mobile</small>
+                                <strong>@ViewData["Mobile"]</strong>
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-github text-primary fs-5 me-3"></i>
+                            <div>
+                                <small class="text-muted d-block">GitHub</small>
+                                <a href="#" class="text-decoration-none">@ViewData["GitHub"]</a>
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-linkedin text-primary fs-5 me-3"></i>
+                            <div>
+                                <small class="text-muted d-block">LinkedIn</small>
+                                <a href="#" class="text-decoration-none">@ViewData["LinkedIn"]</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <button type="button" class="btn btn-animated-success btn-lg w-100 py-3">
+                        <i class="bi bi-download me-2"></i>Download Resume
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="card border-0 shadow-sm h-100 bg-white p-3">
+                <div class="card-body">
+                    <h5 class="fw-bold text-dark mb-4">Send a Direct Message</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary fw-semibold">Your Name</label>
+                            <input type="text" class="form-control form-control-lg fs-6" placeholder="Jane Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary fw-semibold">Email Address</label>
+                            <input type="email" class="form-control form-control-lg fs-6" placeholder="jane@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-secondary fw-semibold">Message</label>
+                            <textarea class="form-control form-control-lg fs-6" rows="4" placeholder="How can I help you?"></textarea>
+                        </div>
+                        <button type="button" class="btn btn-animated-primary btn-lg px-5">
+                            <i class="bi bi-paperplane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
